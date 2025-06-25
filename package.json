@@ -1,5 +1,5 @@
 {
-  "name": "boilerplatefor-blogs-and-articles",
+  "name": "boilerplate-for-blogs-and-articles",
   "version": "1.0.0",
   "description": "Boilerplate for Web Applications using React, Webpack, TypeScript and TailwindCSS",
   "scripts": {
