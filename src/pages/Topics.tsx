@@ -1,6 +1,6 @@
 import PageBreadcrumb from "../components/common/PageBreadCrumb";
 import PageMeta from "../components/common/PageMeta";
-import RecentOrders from "../components/ecommerce/RecentOrders";
+import {RecentOrders} from "../components/ecommerce/RecentOrders";
 
 
 export default function Topics() {

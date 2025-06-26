@@ -1,3 +1,4 @@
+import Raect, { useEffect, useRef, useState } from "react"
 import {
   Table,
   TableBody,
@@ -113,7 +114,28 @@ const tableData: Product[] = [
   },
 ];
 
-export default function RecentOrders() {
+export const RecentOrders: Raect.FC<{}> = () => {
+  const [fetchPost, setFetchPost] = useState([]);
+  const postsUseRef = useRef([]);
+  useEffect(() => {
+
+    try {
+      fetch('https://jsonplaceholder.typicode.com/photos') // https://jsonplaceholder.typicode.com/posts
+        .then(response => response.json())
+        .then(json => {
+          console.log('RecentOrders 2:', json)
+          postsUseRef.current = json.slice(0, 10);
+          setFetchPost(json.slice(0, 5));
+        })
+
+    } catch (error) {
+      throw error;
+    } finally {
+      // console.log('posts 1:', fetchPost[1])
+      // console.log('postsUseRef 1:', postsUseRef.current[1].title)
+    }
+
+  }, []);
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
@@ -202,51 +224,58 @@ export default function RecentOrders() {
           {/* Table Body */}
 
           <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
-            {tableData.map((product) => (
-              <TableRow key={product.id} className="">
+            {postsUseRef.current.map((post, index) => (
+              <TableRow key={index} className="">
                 <TableCell className="py-3">
                   <div className="flex items-center gap-3">
                     <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
                       <img
-                        src={product.image}
+                        src={post.url}
                         className="h-[50px] w-[50px]"
-                        alt={product.name}
+                        alt={post.title}
                       />
                     </div>
                     <div>
                       <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {product.name}
+                        {post.title}
                       </p>
                       <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {product.variants}
+                        {post.thumbnailUrl}
                       </span>
                     </div>
                   </div>
                 </TableCell>
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {product.price}
+                  {post.id}
                 </TableCell>
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {product.category}
+                  {post.albumId}
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                {/* <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                   <Badge
                     size="sm"
                     color={
                       product.status === "Delivered"
                         ? "success"
                         : product.status === "Pending"
-                        ? "warning"
-                        : "error"
+                          ? "warning"
+                          : "error"
                     }
                   >
                     {product.status}
                   </Badge>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>
         </Table>
+
+      </div>
+      <div>
+        pppp
+        {
+          
+        }
       </div>
     </div>
   );
