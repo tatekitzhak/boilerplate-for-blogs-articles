@@ -63,6 +63,7 @@ type TAppAction = IAction1; // Assume other action interfaes will be added via u
 const reducer: Reducer<IState, TAppAction> = (state = { turns: [] }) => state;
 
 const store: Store<IState, TAppAction> = createStore(reducer);
+
 const ReduxStoreWrapper: React.FC<ComponentCardProps> = ({ children }) => {
     return <Provider store={store}>{children}</Provider>;
 }
