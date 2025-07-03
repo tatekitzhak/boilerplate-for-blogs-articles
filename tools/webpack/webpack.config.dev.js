@@ -18,6 +18,15 @@ module.exports = {
   devServer: {
     open: true,
     historyApiFallback: true, // <-- Add this line
+    port: 8081,
+    // allowedHosts: [
+    //   '0.0.0.0',
+    //   'localhost',
+    //   'hyperesources.com',
+    //   'www.hyperesources.com',
+    //   'versityresources.com',
+    //   'www.versityresources.com'
+    //  ],
   },
   optimization: {
     splitChunks: {

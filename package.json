@@ -4,7 +4,7 @@
   "description": "Boilerplate for Web Applications using React, Webpack, TypeScript and TailwindCSS",
   "scripts": {
     "start:webpack": "cross-env NODE_ENV=development webpack serve --config tools/webpack/webpack.config.dev.js",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
+    "build:webpack": "rimraf dist && cross-env NODE_ENV=production webpack --config tools/webpack/webpack.config.prod.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

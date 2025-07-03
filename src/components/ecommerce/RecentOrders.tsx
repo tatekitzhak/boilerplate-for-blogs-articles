@@ -271,12 +271,7 @@ export const RecentOrders: Raect.FC<{}> = () => {
         </Table>
 
       </div>
-      <div>
-        pppp
-        {
-          
-        }
-      </div>
+     
     </div>
   );
 }
